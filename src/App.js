@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles.css";
+import { Button, Grid, Typography } from "@mui/material";
+import useCharacter from "./hooks/useCharacter";
 
-function App() {
+export default function App() {
+  const { characterName, characterImage, getCharacter } = useCharacter();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid className="App" container spacing={2}>
+      <Grid item xs={12}>
+        <Typography variant="h5">Personaje: {`${characterName}`} </Typography>
+      </Grid>
+      <Grid item xs={12}>
+        <img alt={characterName} src={characterImage} />
+      </Grid>
+      <Grid item xs={12}>
+        <Button variant="contained" onClick={getCharacter}>
+          Cambiar personaje
+        </Button>
+      </Grid>
+    </Grid>
   );
 }
-
-export default App;
